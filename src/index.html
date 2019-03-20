@@ -3,15 +3,22 @@
 <head>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script type="text/javascript" src="bundle.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
   <title>Dog Breed Guessing Game</title>
 </head>
 <body>
-  <h1>Can you guess what dog this is?</h1>
-  <form id="dogForm">
-    <input id="dogGuess" type="text">
-    <button type="submit" name="button">Submit</button>
-  </form>
-  <div id="result"></div>
-  <div id="picture"></div>
+  <div class="container">
+  <h1>Can you guess what dog breed this is?</h1>
+  <div class="theGoods">
+    <div id="picture"></div>
+    <form id="dogForm">
+      <div class="submit-button">
+      <input id="dogGuess" type="text">
+      <button id="button"type="submit" name="button">Submit</button>
+      </div>
+      </form>
+    <div id="result"></div>
+  </div>
+ </div>
 </body>
 </html>

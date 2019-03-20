@@ -5,32 +5,27 @@ import './sass/styles.scss';
 import { Dogbreed } from './logic.js';
 
 $ (document).ready(function(){
+  const newGame = new Dogbreed;
+  const dogName = newGame.pickbreed();
+  let promise =  newGame.getDogPic(dogName);
+
+  promise.then(function(response) {
+    let body = JSON.parse(response);
+    $("#picture").html(`<img src=${body.message}>`);
+  }, function(error) {
+    $('.showErrors').text(`There was an error processing your request: ${error.message}`);
+  });
   $("form#dogForm").submit(function(event) {
     event.preventDefault();
-      const newGame = new Dogbreed;
-      const dogName = newGame.pickbreed();
-      $("#result").append(dogName)
+      const dogInput = $("#dogGuess").val();
+      const dogCompare = newGame.getDogInput(dogInput.toLowerCase(), dogName)
+      if (dogCompare === true) {
+        $("#result").text("You guessed correctly!");
+      } else {
+        const correctCount= newGame.getLetter (dogInput.toLowerCase(), dogName)
+        $("#result").text("You guessed incorrectly! you have " + correctCount + "letter correct");
 
-      // let promise = new Promise(function(resolve, reject) {
-      //   let request = new XMLHttpRequest();
-      //   let url = `https://dog.ceo/api/breed/${dogName}/images/random`;
-      //   request.onload = function() {
-      //     if (this.status === 200) {
-      //       resolve(request.response);
-      //     } else {
-      //       reject(Error(request.statusText));
-      //     }
-      //   }
-      //   request.open("GET", url, true);
-      //   request.send();
-      // });
-      let promise = newGame.getDogPic(dogName);
+      }
 
-      promise.then(function(response) {
-        let body = JSON.parse(response);
-        $("#picture").html(`<img src=${body.message}>`);
-      }, function(error) {
-        $('.showErrors').text(`There was an error processing your request: ${error.message}`);
-      });
   });
 });

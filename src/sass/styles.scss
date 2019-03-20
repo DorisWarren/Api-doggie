@@ -1,1 +1,33 @@
+body {
+  background: url("../assest/img/doggie.jpg");
+  background-color: white;
+  margin: 10px;
+  padding: 0;
 
+
+}
+
+h1{
+  font-family: 'Cinzel', serif;
+  color: white;
+  text-align: center;
+
+}
+
+.theGoods {
+display: flex;
+flex-direction: column;
+justify-content: center;
+text-align: center;
+
+ .submit-button{
+
+   padding-top: 25px;
+ }
+}
+
+#result {
+  font-family: 'Cinzel', serif;
+  color: white;
+  font-size: 24px;
+}
